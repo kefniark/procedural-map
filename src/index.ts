@@ -5,17 +5,14 @@ import { FreeCamera } from "@babylonjs/core/Cameras/freeCamera"
 import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight"
 import { Mesh } from "@babylonjs/core/Meshes/mesh"
 // import { GridMaterial } from "@babylonjs/materials/grid"
-import noisejs from "noisejs"
-import { SquareGridWall, Color } from "coopa"
-
 import "@babylonjs/core/Meshes/meshBuilder"
-
-import "@babylonjs/core/Debug/debugLayer"
-import "@babylonjs/inspector"
 import { VertexData } from "@babylonjs/core/Meshes/mesh.vertexData"
 import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial"
 import { SpriteManager } from "@babylonjs/core/Sprites/spriteManager"
 import { Sprite } from "@babylonjs/core/Sprites/sprite"
+import noisejs from "noisejs"
+import { SquareGridWall, Color } from "coopa"
+import { Texture } from "@babylonjs/core/Materials/Textures/texture"
 
 const canvas = document.getElementById("renderCanvas")
 if (!canvas) throw new Error("Canvas not initialized")
@@ -30,7 +27,9 @@ camera.setTarget(Vector3.Zero())
 camera.attachControl(canvas, true)
 
 // main settings
-scene.debugLayer.show()
+// import "@babylonjs/core/Debug/debugLayer"
+// import "@babylonjs/inspector"
+// scene.debugLayer.show()
 const seed = Math.random()
 const size = 96
 const tileSize = 3
@@ -49,15 +48,18 @@ waterMat.diffuseColor = new Color3(wat[0] / 255, wat[1] / 255, wat[2] / 255)
 waterMat.alpha = 0.6
 waterMat.specularColor = new Color3(0.4, 0.4, 0.4)
 
-var material = new StandardMaterial("grid", scene)
-const mat = palette[3].rgb()
-material.diffuseColor = new Color3(mat[0] / 255, mat[1] / 255, mat[2] / 255)
-material.specularColor = new Color3(0.4, 0.4, 0.4)
+var material = new StandardMaterial("grass", scene)
+material.diffuseTexture = new Texture("https://i.ibb.co/DDr0NZK/grass.jpg", scene)
+material.diffuseTexture.uScale = size * tileSize;
+material.diffuseTexture.vScale = size * tileSize;
+// const mat = palette[3].rgb()
+// material.diffuseColor = new Color3(mat[0] / 255, mat[1] / 255, mat[2] / 255)
+// material.specularColor = new Color3(0.4, 0.4, 0.4)
 
 // Our built-in 'sphere' shape. Params: name, subdivs, size, scene
-var sphere = Mesh.CreateSphere("sphere1", 16, 2, scene)
-sphere.position.y = 2
-sphere.material = material
+// var sphere = Mesh.CreateSphere("sphere1", 16, 2, scene)
+// sphere.position.y = 2
+// sphere.material = material
 
 // Render every frame
 engine.runRenderLoop(() => {
