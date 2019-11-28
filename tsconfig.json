@@ -1,0 +1,43 @@
+{
+	"compilerOptions": {
+		// build
+		"typeRoots": ["node_modules/@types"],
+		"lib": ["esnext", "dom"],
+		"target": "esnext",
+		"outDir": "./build",
+		"declaration": false,
+		"module": "esnext",
+		"moduleResolution": "node",
+
+		// build settings
+		"sourceMap": false,
+		"pretty": true,
+		"preserveConstEnums": false,
+
+		// strict
+		"strict": true,
+		"alwaysStrict": true,
+		"strictPropertyInitialization": false,
+		"noEmit": false,
+		"importHelpers": false,
+		"noEmitHelpers": false,
+		"noEmitOnError": true,
+		"strictNullChecks": true,
+		"noUnusedLocals": true,
+		"noImplicitAny": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"include":[
+		"./src/**/*"
+	],
+	"exclude": [
+		"./tests/**/*",
+		"./node_modules",
+		"./build",
+		"./docs"
+	]
+}

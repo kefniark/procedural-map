@@ -1,0 +1,42 @@
+{
+	"name": "procedural-map",
+	"version": "1.0.0",
+	"description": "",
+	"main": "build/map.umd.js",
+	"module": "build/map.esm.js",
+	"dependencies": {},
+	"devDependencies": {
+		"@babylonjs/core": "^4.0.3",
+		"@babylonjs/inspector": "^4.0.3",
+		"@babylonjs/materials": "^4.0.3",
+		"@types/noisejs": "0.0.28",
+		"@typescript-eslint/eslint-plugin": "^2.9.0",
+		"@typescript-eslint/parser": "^2.9.0",
+		"coopa": "^0.2.3",
+		"eslint": "^6.7.1",
+		"eslint-config-prettier": "^6.7.0",
+		"livereload": "^0.8.2",
+		"noisejs": "^2.1.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^1.19.1",
+		"rimraf": "^3.0.0",
+		"rollup": "^1.27.5",
+		"rollup-plugin-commonjs": "^10.1.0",
+		"rollup-plugin-node-resolve": "^5.2.0",
+		"rollup-plugin-serve": "^1.0.1",
+		"rollup-plugin-terser": "^5.1.2",
+		"rollup-plugin-typescript": "^1.0.1",
+		"tslib": "^1.10.0",
+		"typescript": "^3.7.2"
+	},
+	"scripts": {
+		"autofix": "run-s autofix:**",
+		"autofix:eslint-src": "eslint \"src/**/*.ts\" --fix --quiet",
+		"build": "rimraf build && run-s build:**",
+		"build:esm": "rollup -c rollup.config.js",
+		"dev": "rollup -c rollup.dev.js --watch",
+		"dev:livereload": "livereload samples/"
+	},
+	"author": "",
+	"license": "ISC"
+}
